@@ -1,0 +1,140 @@
+//leetcode2652
+
+Class Solution {
+    public int sumOfMultiples(int n) {
+        int s=0;
+        while(n>0){ 
+            if(n%3==0||n%5==0||n%7==0){
+                s+=n;
+            }
+            n--;
+        }
+        return s;
+    }
+}
+//leetcode 009
+class Solution {
+    public boolean isPalindrome(int x) {
+         if (x<0) {
+            return false;
+        }
+        int rev=0;
+        int a=x;
+        while(x>0) {
+            rev=(rev*10)+(x%10);
+            x/=10;
+        }
+        return rev==a;    
+    }
+}
+//leetcode 007
+class Solution {
+    public int reverse(int x) {
+        long rev=0;
+        while(x!=0){
+            int d=x%10;
+            rev=rev*10+d;
+            x=x/10;
+        }if(rev>Integer.MAX_VALUE||rev<Integer.MIN_VALUE) return 0;
+        return (int)rev;
+    }
+}
+//leetcode 2739
+class Solution {
+    public int distanceTraveled(int mainTank, int additionalTank) {
+        int fc=0;
+        int count=0;
+        while(mainTank>0) {
+            count++;
+            if(count==5) {
+                count=0;
+                if(additionalTank>0) {
+                    mainTank++;
+                    additionalTank--;
+                }
+            }
+            fc++;
+            mainTank--;
+        }
+        int res=fc*10;
+        return res;
+    }
+}
+//leetcode 1952
+class Solution {
+    public boolean isThree(int n) {
+        int div=0;
+        for(int i=1;i<=n;i++){
+            if(n%i==0){
+                div++;
+                if(div>3) return false;
+            }
+        }
+        return div==3;
+    }
+}
+//leetcode 1518
+class Solution {
+    public int numWaterBottles(int numBottles, int numExchange) {
+        return (numBottles*numExchange-1)/(numExchange-1);
+    }
+}
+//leetcode 476
+class Solution {
+    public int findComplement(int num) {
+        int rem,ans=0;
+        long mul=1;
+        if (num==0) return 1;
+        while(num>0) {
+            rem=num%2;
+            rem^=1;   
+            num/=2;
+            ans=(int)(ans+rem*mul);
+            mul*=2;
+        }
+        return ans;
+    }
+}
+//leetcode 397
+class Solution {
+    public int integerReplacement(int n) {
+        long temp=n; 
+        int count=0;
+        while (temp!=1){
+            if (temp%2==0){
+                temp/=2;
+            }else if(temp==3||temp%4==1) {
+                    temp--;
+                }else{
+                    temp++;
+                }
+            count++;
+        }
+        return count;
+    }
+}
+//leetcode 326
+class Solution {
+    public boolean isPowerOfThree(int n) {
+        long temp=1;
+       while(n>1&&temp<n)
+       {
+           temp+=temp<<1; 
+       }
+       return temp==n;
+   }
+    }
+//leetcode 190
+class Solution {
+    public int reverseBits(int n) {
+        int res=0;
+        for(int i=0;i<32;i++){
+            int l=n&1;
+            int t=l<<(31-i);
+            res=res|t;
+            n=n>>1;
+        }
+        return res;
+    }
+}
+
